@@ -1,11 +1,19 @@
 ## Introduction
 
-```sh
-git clone <your_repo_url>
-```
+## GitHub Actions
 
-https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository 
-    
+* Establish pipeline workflow for java maven configuration
+* Strategy to run test for every pull request raised against master
+* Run test in chrome browser in headless mode
+* Publish Surefire reports
+
+## Selenium Grid
+
+* Implementation of Distributed Selenium Grid
+* Enable cross browser/devices automation with different browser nodes
+* Scalability
+* Remote test executions
+
 
 ## Java Installation
 
