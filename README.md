@@ -14,40 +14,18 @@
 * Scalability
 * Remote test executions
 
-
-## Java Installation
-
-```
-https://www.oracle.com/java/technologies/javase/jdk22-archive-downloads.html
-```
-
-
-## Use Intellij or Eclipse ? 
-its best if you use Intellij for workshop to ensure everyone on same page
-
-Directly import the project as a maven project
-
-## Setup Project SDK
-Intellij requires you to set/ choose project SDK , follow this link for the same, you should choose Java 22
-
-https://intellij-support.jetbrains.com/hc/en-us/community/posts/360010215699-Set-up-a-project-SDK
-
-## Download Maven
-
-Download Maven https://maven.apache.org/download.cgi
-
 Open a command line/ Terminal in project folder
-```sh
-mvn compile
+```standalone selenium grid in Mac
+docker run -d -p 4444:4444 -p 5900:5900 -p 7900:7900 --shm-size 2g seleniarm/standalone-chromium:lates
 ```
 
-If above command is successful then we are good to go
-
-## Execution
-
-```sh
-mvn clean test
+```distributed selenium grid
+docker compose -f docker-compose-v3.yml up -d
+```
+```scaling chrome service
+docker compose -f docker-compose-v3.yml up --scale chrome=3 -d
 ```
 
-all the tests of mentioned suite in pom.xml will run
-
+```tear down containers
+docker compose -f docker-compose-v3.yml down
+```
