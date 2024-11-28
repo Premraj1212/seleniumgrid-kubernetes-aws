@@ -29,3 +29,76 @@ docker compose -f docker-compose-v3.yml up --scale chrome=3 -d
 ```tear down containers
 docker compose -f docker-compose-v3.yml down
 ```
+
+## Kubernetes
+
+* Verify Kubernetes is Running:
+```Open a terminal and run the following command to check the status of Kubernetes:
+kubectl cluster-info
+```
+
+```Check Nodes Status:
+kubectl get nodes
+```
+
+* Apply the deployment using:
+```
+kubectl apply -f selenium-hub-deployment.yaml
+```
+* Verify the deployment by running:
+```
+kubectl get pods
+```
+* Apply the service configuration using:
+```
+kubectl apply -f selenium-hub-service.yaml
+```
+* Verify the service is running by checking its status:
+```
+kubectl get services
+```
+* Deploy the node using:
+```
+kubectl apply -f selenium-node-chrome-deployment.yaml
+```
+* Verify that the Selenium Node is running:
+```
+kubectl get pods
+```
+
+```Delete the Selenium Node Deployment:
+kubectl delete deployment selenium-node-chrome
+```
+```Delete the Selenium Hub Deployment:
+kubectl delete deployment selenium-hub-deployment
+```
+```Delete the Selenium Hub Service:
+kubectl delete service selenium-hub-service
+```
+
+## Helm
+
+* Install the helm chart:
+```go to the directory having templates, chart.yaml, values.yaml:
+helm install selenium-grid ./selenium-grid
+```
+
+* Update with a Values File
+```To apply new values from a values.yaml file to an active Helm deployment:
+helm upgrade selenium-grid ./selenium-grid -f path/to/your/values.yaml
+```
+
+* Uninstall selenium grid with helm
+```
+helm uninstall selenium-grid
+```
+
+* Check whether all the pods and services are down using kubectl
+```
+kubectl get pods
+kubectl get services
+```
+* Optional Package your chart below command will create a compressed tgz file which you can use to share with others
+```
+helm package my-chart
+```
