@@ -6,10 +6,11 @@
 * Enable cross browser/devices automation with different browser nodes
 * Scalability
 * Remote test executions
+* Video Recording on test executions
 
 Open a command line/ Terminal in project folder
 ```standalone selenium grid in Mac
-docker run -d -p 4444:4444 -p 5900:5900 -p 7900:7900 --shm-size 2g seleniarm/standalone-chromium:lates
+docker run -d -p 4444:4444 -p 5900:5900 -p 7900:7900 --shm-size 2g seleniarm/standalone-chromium:latest
 ```
 
 ```distributed selenium grid
