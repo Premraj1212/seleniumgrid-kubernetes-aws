@@ -1,12 +1,5 @@
 ## Introduction
 
-## GitHub Actions
-
-* Establish pipeline workflow for java maven configuration
-* Strategy to run test for every pull request raised against master
-* Run test in chrome browser in headless mode
-* Publish Surefire reports
-
 ## Selenium Grid
 
 * Implementation of Distributed Selenium Grid
@@ -102,3 +95,33 @@ kubectl get services
 ```
 helm package my-chart
 ```
+
+## AWS EKS
+
+* Create a Kubernetes cluster in Amazon EKS using AWS CloudShell and then deploy Selenium Grid using Helm.
+
+* Create an EKS Cluster:
+```
+eksctl create cluster \
+--name selenium-grid \
+--region ap-southeast-1 \
+--nodegroup-name selenium-grid-nodes \
+--node-type t3.medium \
+--nodes 2 \
+--nodes-min 1 \
+--nodes-max 4 \
+--managed
+
+```
+* Delete cluster along with worker nodes: [!important to shutdown EKS and related services]
+```
+eksctl delete cluster --name selenium-grid --region ap-southeast-1
+```
+
+## GitHub Actions
+
+* Establish pipeline workflow to run test in aws cloud 
+* Strategy to run test for every pull request raised against master
+* Run test in Selenium grid
+* Leveraging Kubernetes and Helm
+* Publish Surefire reports
