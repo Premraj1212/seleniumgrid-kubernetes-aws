@@ -89,4 +89,4 @@ jobs:
       - name: Cleanup Helm Chart
         if: always()
         run: helm uninstall ${{ env.RELEASE_NAME }}
-        continue-on-error: true  # This step will not fail the job
+        continue-on-error: true  #This step will not fail the job
