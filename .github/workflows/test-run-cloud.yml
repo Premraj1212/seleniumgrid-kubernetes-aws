@@ -9,8 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
+      statuses: write
       checks: write
-      contents: read
+      contents: write
+      pull-requests: write
+      actions: write
 
     env:
       # Define a dynamic release name using GitHub Actions run ID for uniqueness
