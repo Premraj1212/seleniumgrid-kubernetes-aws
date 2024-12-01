@@ -9,8 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
+      statuses: write
       checks: write
-      contents: read
+      contents: write
+      pull-requests: write
+      actions: write
 
     env:
       # Define a dynamic release name using GitHub Actions run ID for uniqueness
@@ -25,9 +28,12 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Install kubectl
-        run: >
-          curl -LO "https://dl.k8s.io/release/$(curl -L -s
-          https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        run: |
+          
+          [ -d ./kubectl ] && rm -r ./kubectl
+          [ -f ./kubectl ] && rm ./kubectl
+
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 
           chmod +x ./kubectl
 
@@ -89,4 +95,4 @@ jobs:
       - name: Cleanup Helm Chart
         if: always()
         run: helm uninstall ${{ env.RELEASE_NAME }}
-        continue-on-error: true  # This step will not fail the job
+        continue-on-error: true  #This step will not fail the job
