@@ -69,6 +69,10 @@ kubectl delete deployment selenium-hub-deployment
 kubectl delete service selenium-hub-service
 ```
 
+```Create Kubernetes Namespace :
+kubectl create namespace ${{ env.NAMESPACE }}
+```
+
 ## Helm
 
 * Install the helm chart:
